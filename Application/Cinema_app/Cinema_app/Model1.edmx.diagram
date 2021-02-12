@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f89bdd40df1f4261b5705816dfe021ba" Name="Diagram1">
+        <EntityTypeShape EntityType="Cinema_database_model.DANE_OSOBOWE" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinema_database_model.FILMY" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinema_database_model.KLIENCI" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinema_database_model.SEANSE" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cinema_database_model.ZAMOWIENIA" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="Cinema_database_model.FK__KLIENCI__EMAIL__062DE679" ManuallyRouted="false" />
+        <AssociationConnector Association="Cinema_database_model.FK__SEANSE__ID_FILMU__0169315C" ManuallyRouted="false" />
+        <AssociationConnector Association="Cinema_database_model.FK__ZAMOWIENI__ID_KL__090A5324" ManuallyRouted="false" />
+        <AssociationConnector Association="Cinema_database_model.FK__ZAMOWIENI__ID_SE__09FE775D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Cinema_database_modelStoreContainer" CdmEntityContainer="masterEntities">
+    <EntitySetMapping Name="DANE_OSOBOWE">
+      <EntityTypeMapping TypeName="Cinema_database_model.DANE_OSOBOWE">
+        <MappingFragment StoreEntitySet="DANE_OSOBOWE">
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="IMIE" ColumnName="IMIE" />
+          <ScalarProperty Name="NAZWISKO" ColumnName="NAZWISKO" />
+          <ScalarProperty Name="NUMER_TEL" ColumnName="NUMER_TEL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FILMY">
+      <EntityTypeMapping TypeName="Cinema_database_model.FILMY">
+        <MappingFragment StoreEntitySet="FILMY">
+          <ScalarProperty Name="ID_FILMU" ColumnName="ID_FILMU" />
+          <ScalarProperty Name="TYTUL" ColumnName="TYTUL" />
+          <ScalarProperty Name="GATUNEK" ColumnName="GATUNEK" />
+          <ScalarProperty Name="REZYSER" ColumnName="REZYSER" />
+          <ScalarProperty Name="CZAS_TRWANIA" ColumnName="CZAS_TRWANIA" />
+          <ScalarProperty Name="OCENA" ColumnName="OCENA" />
+          <ScalarProperty Name="ILOSC_GLOSOW" ColumnName="ILOSC_GLOSOW" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KLIENCI">
+      <EntityTypeMapping TypeName="Cinema_database_model.KLIENCI">
+        <MappingFragment StoreEntitySet="KLIENCI">
+          <ScalarProperty Name="ID_KLIENTA" ColumnName="ID_KLIENTA" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="HASLO" ColumnName="HASLO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEANSE">
+      <EntityTypeMapping TypeName="Cinema_database_model.SEANSE">
+        <MappingFragment StoreEntitySet="SEANSE">
+          <ScalarProperty Name="ID_SEANSU" ColumnName="ID_SEANSU" />
+          <ScalarProperty Name="ID_FILMU" ColumnName="ID_FILMU" />
+          <ScalarProperty Name="DATA_SEANSU" ColumnName="DATA_SEANSU" />
+          <ScalarProperty Name="CENA" ColumnName="CENA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZAMOWIENIA">
+      <EntityTypeMapping TypeName="Cinema_database_model.ZAMOWIENIA">
+        <MappingFragment StoreEntitySet="ZAMOWIENIA">
+          <ScalarProperty Name="ID_ZAMOWIENIA" ColumnName="ID_ZAMOWIENIA" />
+          <ScalarProperty Name="ID_KLIENTA" ColumnName="ID_KLIENTA" />
+          <ScalarProperty Name="ID_SEANSU" ColumnName="ID_SEANSU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

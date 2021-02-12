@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Cinema_database_model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DANE_OSOBOWE">
+    <Key>
+      <PropertyRef Name="EMAIL" />
+    </Key>
+    <Property Name="EMAIL" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IMIE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NAZWISKO" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUMER_TEL" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <NavigationProperty Name="KLIENCI" Relationship="Self.FK__KLIENCI__EMAIL__062DE679" FromRole="DANE_OSOBOWE" ToRole="KLIENCI" />
+  </EntityType>
+  <EntityType Name="FILMY">
+    <Key>
+      <PropertyRef Name="ID_FILMU" />
+    </Key>
+    <Property Name="ID_FILMU" Type="Int32" Nullable="false" />
+    <Property Name="TYTUL" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GATUNEK" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REZYSER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CZAS_TRWANIA" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="OCENA" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
+    <Property Name="ILOSC_GLOSOW" Type="Decimal" Precision="5" Scale="0" />
+    <NavigationProperty Name="SEANSE" Relationship="Self.FK__SEANSE__ID_FILMU__0169315C" FromRole="FILMY" ToRole="SEANSE" />
+  </EntityType>
+  <EntityType Name="KLIENCI">
+    <Key>
+      <PropertyRef Name="ID_KLIENTA" />
+    </Key>
+    <Property Name="ID_KLIENTA" Type="Int32" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="HASLO" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DANE_OSOBOWE" Relationship="Self.FK__KLIENCI__EMAIL__062DE679" FromRole="KLIENCI" ToRole="DANE_OSOBOWE" />
+    <NavigationProperty Name="ZAMOWIENIA" Relationship="Self.FK__ZAMOWIENI__ID_KL__090A5324" FromRole="KLIENCI" ToRole="ZAMOWIENIA" />
+  </EntityType>
+  <EntityType Name="SEANSE">
+    <Key>
+      <PropertyRef Name="ID_SEANSU" />
+    </Key>
+    <Property Name="ID_SEANSU" Type="Int32" Nullable="false" />
+    <Property Name="ID_FILMU" Type="Int32" />
+    <Property Name="DATA_SEANSU" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CENA" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+    <NavigationProperty Name="FILMY" Relationship="Self.FK__SEANSE__ID_FILMU__0169315C" FromRole="SEANSE" ToRole="FILMY" />
+    <NavigationProperty Name="ZAMOWIENIA" Relationship="Self.FK__ZAMOWIENI__ID_SE__09FE775D" FromRole="SEANSE" ToRole="ZAMOWIENIA" />
+  </EntityType>
+  <EntityType Name="ZAMOWIENIA">
+    <Key>
+      <PropertyRef Name="ID_ZAMOWIENIA" />
+    </Key>
+    <Property Name="ID_ZAMOWIENIA" Type="Int32" Nullable="false" />
+    <Property Name="ID_KLIENTA" Type="Int32" />
+    <Property Name="ID_SEANSU" Type="Int32" />
+    <NavigationProperty Name="KLIENCI" Relationship="Self.FK__ZAMOWIENI__ID_KL__090A5324" FromRole="ZAMOWIENIA" ToRole="KLIENCI" />
+    <NavigationProperty Name="SEANSE" Relationship="Self.FK__ZAMOWIENI__ID_SE__09FE775D" FromRole="ZAMOWIENIA" ToRole="SEANSE" />
+  </EntityType>
+  <Association Name="FK__KLIENCI__EMAIL__062DE679">
+    <End Role="DANE_OSOBOWE" Type="Self.DANE_OSOBOWE" Multiplicity="0..1" />
+    <End Role="KLIENCI" Type="Self.KLIENCI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DANE_OSOBOWE">
+        <PropertyRef Name="EMAIL" />
+      </Principal>
+      <Dependent Role="KLIENCI">
+        <PropertyRef Name="EMAIL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SEANSE__ID_FILMU__0169315C">
+    <End Role="FILMY" Type="Self.FILMY" Multiplicity="0..1" />
+    <End Role="SEANSE" Type="Self.SEANSE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FILMY">
+        <PropertyRef Name="ID_FILMU" />
+      </Principal>
+      <Dependent Role="SEANSE">
+        <PropertyRef Name="ID_FILMU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ZAMOWIENI__ID_KL__090A5324">
+    <End Role="KLIENCI" Type="Self.KLIENCI" Multiplicity="0..1" />
+    <End Role="ZAMOWIENIA" Type="Self.ZAMOWIENIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KLIENCI">
+        <PropertyRef Name="ID_KLIENTA" />
+      </Principal>
+      <Dependent Role="ZAMOWIENIA">
+        <PropertyRef Name="ID_KLIENTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ZAMOWIENI__ID_SE__09FE775D">
+    <End Role="SEANSE" Type="Self.SEANSE" Multiplicity="0..1" />
+    <End Role="ZAMOWIENIA" Type="Self.ZAMOWIENIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEANSE">
+        <PropertyRef Name="ID_SEANSU" />
+      </Principal>
+      <Dependent Role="ZAMOWIENIA">
+        <PropertyRef Name="ID_SEANSU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DANE_OSOBOWE" EntityType="Self.DANE_OSOBOWE" />
+    <EntitySet Name="FILMY" EntityType="Self.FILMY" />
+    <EntitySet Name="KLIENCI" EntityType="Self.KLIENCI" />
+    <EntitySet Name="SEANSE" EntityType="Self.SEANSE" />
+    <EntitySet Name="ZAMOWIENIA" EntityType="Self.ZAMOWIENIA" />
+    <AssociationSet Name="FK__KLIENCI__EMAIL__062DE679" Association="Self.FK__KLIENCI__EMAIL__062DE679">
+      <End Role="DANE_OSOBOWE" EntitySet="DANE_OSOBOWE" />
+      <End Role="KLIENCI" EntitySet="KLIENCI" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SEANSE__ID_FILMU__0169315C" Association="Self.FK__SEANSE__ID_FILMU__0169315C">
+      <End Role="FILMY" EntitySet="FILMY" />
+      <End Role="SEANSE" EntitySet="SEANSE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ZAMOWIENI__ID_KL__090A5324" Association="Self.FK__ZAMOWIENI__ID_KL__090A5324">
+      <End Role="KLIENCI" EntitySet="KLIENCI" />
+      <End Role="ZAMOWIENIA" EntitySet="ZAMOWIENIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ZAMOWIENI__ID_SE__09FE775D" Association="Self.FK__ZAMOWIENI__ID_SE__09FE775D">
+      <End Role="SEANSE" EntitySet="SEANSE" />
+      <End Role="ZAMOWIENIA" EntitySet="ZAMOWIENIA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
