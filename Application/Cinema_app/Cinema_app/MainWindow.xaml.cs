@@ -20,21 +20,29 @@ namespace Cinema_app
     /// </summary>
     public partial class MainWindow : Window
     {
-        masterEntities cokolwiek = new masterEntities();
+        CinemaDB cokolwiek = new CinemaDB();
 
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+            KLIENCI klient = new KLIENCI();
+
+
+           
+        }  
+        CinemaDB CDB = new CinemaDB();
+
+        private void btnZaloguj_Click_1(object sender, RoutedEventArgs e)
         {
-            var query =
-            from DANE_OSOBOWE in cokolwiek.DANE_OSOBOWE
-            where DANE_OSOBOWE.NUMER_TEL >  1
-            select new { DANE_OSOBOWE.IMIE, DANE_OSOBOWE.NAZWISKO, DANE_OSOBOWE.NUMER_TEL };
-
-            dataGrid1.ItemsSource = query.ToList();
+            foreach (var klient in CDB.KLIENCI)
+            {
+                if (klient.EMAIL == txtEmail.Text && klient.HASLO == txtpassword.Password)
+                {
+                    MessageBox.Show("Działa");
+                }
+               
+            }
         }
-    }
+    }  
 }

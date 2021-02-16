@@ -13,10 +13,10 @@ namespace Cinema_app
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class masterEntities : DbContext
+    public partial class CinemaDB : DbContext
     {
-        public masterEntities()
-            : base("name=masterEntities")
+        public CinemaDB()
+            : base("name=CinemaDB")
         {
         }
     

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Cinema_database_model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CinemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DANE_OSOBOWE">
           <Key>
             <PropertyRef Name="EMAIL" />
@@ -99,7 +99,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Cinema_database_modelStoreContainer">
+        <EntityContainer Name="CinemaModelStoreContainer">
           <EntitySet Name="DANE_OSOBOWE" EntityType="Self.DANE_OSOBOWE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FILMY" EntityType="Self.FILMY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KLIENCI" EntityType="Self.KLIENCI" Schema="dbo" store:Type="Tables" />
@@ -126,7 +126,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Cinema_database_model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="CinemaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="DANE_OSOBOWE">
           <Key>
             <PropertyRef Name="EMAIL" />
@@ -229,7 +229,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CinemaDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DANE_OSOBOWE" EntityType="Self.DANE_OSOBOWE" />
           <EntitySet Name="FILMY" EntityType="Self.FILMY" />
           <EntitySet Name="KLIENCI" EntityType="Self.KLIENCI" />
@@ -257,9 +257,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Cinema_database_modelStoreContainer" CdmEntityContainer="masterEntities">
+        <EntityContainerMapping StorageEntityContainer="CinemaModelStoreContainer" CdmEntityContainer="CinemaDB">
           <EntitySetMapping Name="DANE_OSOBOWE">
-            <EntityTypeMapping TypeName="Cinema_database_model.DANE_OSOBOWE">
+            <EntityTypeMapping TypeName="CinemaModel.DANE_OSOBOWE">
               <MappingFragment StoreEntitySet="DANE_OSOBOWE">
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="IMIE" ColumnName="IMIE" />
@@ -269,7 +269,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FILMY">
-            <EntityTypeMapping TypeName="Cinema_database_model.FILMY">
+            <EntityTypeMapping TypeName="CinemaModel.FILMY">
               <MappingFragment StoreEntitySet="FILMY">
                 <ScalarProperty Name="ID_FILMU" ColumnName="ID_FILMU" />
                 <ScalarProperty Name="TYTUL" ColumnName="TYTUL" />
@@ -282,7 +282,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KLIENCI">
-            <EntityTypeMapping TypeName="Cinema_database_model.KLIENCI">
+            <EntityTypeMapping TypeName="CinemaModel.KLIENCI">
               <MappingFragment StoreEntitySet="KLIENCI">
                 <ScalarProperty Name="ID_KLIENTA" ColumnName="ID_KLIENTA" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
@@ -291,7 +291,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SEANSE">
-            <EntityTypeMapping TypeName="Cinema_database_model.SEANSE">
+            <EntityTypeMapping TypeName="CinemaModel.SEANSE">
               <MappingFragment StoreEntitySet="SEANSE">
                 <ScalarProperty Name="ID_SEANSU" ColumnName="ID_SEANSU" />
                 <ScalarProperty Name="ID_FILMU" ColumnName="ID_FILMU" />
@@ -301,7 +301,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ZAMOWIENIA">
-            <EntityTypeMapping TypeName="Cinema_database_model.ZAMOWIENIA">
+            <EntityTypeMapping TypeName="CinemaModel.ZAMOWIENIA">
               <MappingFragment StoreEntitySet="ZAMOWIENIA">
                 <ScalarProperty Name="ID_ZAMOWIENIA" ColumnName="ID_ZAMOWIENIA" />
                 <ScalarProperty Name="ID_KLIENTA" ColumnName="ID_KLIENTA" />

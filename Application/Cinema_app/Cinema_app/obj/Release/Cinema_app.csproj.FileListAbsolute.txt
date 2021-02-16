@@ -1,0 +1,6 @@
+C:\Users\grzes\source\repos\Cinema_app\Cinema_app\obj\Release\Cinema_app.csprojAssemblyReference.cache
+C:\Users\grzes\source\repos\Cinema_app\Cinema_app\obj\Release\MainWindow.g.cs
+C:\Users\grzes\source\repos\Cinema_app\Cinema_app\obj\Release\App.g.cs
+C:\Users\grzes\source\repos\Cinema_app\Cinema_app\obj\Release\Cinema_app_Content.g.cs
+C:\Users\grzes\source\repos\Cinema_app\Cinema_app\obj\Release\Cinema_app_MarkupCompile.cache
+C:\Users\grzes\source\repos\Cinema_app\Cinema_app\obj\Release\Cinema_app_MarkupCompile.lref

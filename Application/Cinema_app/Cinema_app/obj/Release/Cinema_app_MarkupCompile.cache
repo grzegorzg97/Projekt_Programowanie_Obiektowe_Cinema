@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\grzes\source\repos\Cinema_app\Cinema_app\obj\Debug\
+C:\Users\grzes\source\repos\Cinema_app\Cinema_app\obj\Release\
 Cinema_app
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\grzes\source\repos\Cinema_app\Cinema_app\App.xaml
 11151548125
 21750853300
@@ -16,5 +16,5 @@ C:\Users\grzes\source\repos\Cinema_app\Cinema_app\App.xaml
 18706233992
 MainWindow.xaml;
 
-False
+True
 
